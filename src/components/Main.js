@@ -47,8 +47,8 @@ class Main extends React.Component {
           <ul className="elements">
             {this.state.cards.map((element) => {
               return (
-              <Card card = {element} onCardClick = {this.props.onCardView} />
-              )
+              <Card key={element._id} card = {element} onCardClick = {this.props.onCardView} />
+              );
             })}
           </ul>
         </section>

@@ -13,7 +13,7 @@ class App extends React.Component {
       isEditAvatarPopupOpen: false,
       isEditProfileOpen: false,
       isAddPlacePopupOpen: false,
-      selectedCard: false
+      selectedCard: {name: '', link: ''}
     };
   };
 
@@ -38,13 +38,13 @@ class App extends React.Component {
       isEditAvatarPopupOpen: false,
       isEditProfileOpen: false,
       isAddPlacePopupOpen: false,
-      selectedCard: false
+      selectedCard: {name: '', link: ''}
     });
   };
 
   render() {
     return (
-    <div className="page">
+      <>
       <Header />
       <Main
         onEditAvatar={this.handleEditAvatarClick}
@@ -58,15 +58,16 @@ class App extends React.Component {
         title="Редактировать профиль"
         isOpen={this.state.isEditProfileOpen}
         onClose={this.closeAllPopups}
+        buttonText='Сохранить'
         children={
           <>
           <label className="popup__field">
-             <input  type="text" minLength="2" maxLength="40" id="name-input" name="name" value=""
-              placeholder="Имя" className="popup__input popup__input_type_name" required/>
+             <input  type="text" minLength="2" maxLength="40" id="name-input" name="name" defaultValue=""
+              placeholder="Имя" className="popup__input popup__input_type_name" required />
             <span className="popup__input-error name-input-error"></span>
           </label>
           <label className="popup__field">
-            <input type="text" minLength="2" maxLength="200" id="about-input" name="about" value=""
+            <input type="text" minLength="2" maxLength="200" id="about-input" name="about" defaultValue=""
               placeholder="О себе" className="popup__input popup__input_type_about" required/>
             <span className="popup__input-error about-input-error"></span>
           </label>
@@ -78,15 +79,16 @@ class App extends React.Component {
         title="Новое место"
         isOpen={this.state.isAddPlacePopupOpen}
         onClose={this.closeAllPopups}
+        buttonText='Создать'
         children={
           <>
           <label className="popup__field">
-            <input type="text" minLength="1" maxLength="30" id="place-name" name="name" value="" placeholder="Название"
+            <input type="text" minLength="1" maxLength="30" id="place-name" name="name" defaultValue="" placeholder="Название"
               className="popup__input popup__input_type_title" required/>
             <span className="popup__input-error place-name-error"></span>
           </label>
           <label className="popup__field">
-            <input type="url" id="place-link" name="link" value="" placeholder="Ссылка на картинку"
+            <input type="url" id="place-link" name="link" defaultValue="" placeholder="Ссылка на картинку"
               className="popup__input popup__input_type_link" required/>
             <span className="popup__input-error place-link-error"></span>
           </label>
@@ -99,10 +101,11 @@ class App extends React.Component {
         title="Редактировать аватар"
         isOpen={this.state.isEditAvatarPopupOpen}
         onClose={this.closeAllPopups}
+        buttonText='Сохранить'
         children={
           <>
           <label className="popup__field">
-            <input  type="url" id="avatar-input" name="avatar" value=" "
+            <input  type="url" id="avatar-input" name="avatar" defaultValue=" "
               placeholder="Ссылка на аватар" className="popup__input popup__input_type_avatar" required/>
             <span className="popup__input-error avatar-input-error"></span>
           </label>
@@ -110,11 +113,10 @@ class App extends React.Component {
         }
       />
       <ImagePopup
-        // isOpen={this.state.selectedCard}
         onClose={this.closeAllPopups}
         card={this.state.selectedCard}
       />
-    </div>
+      </>
     );
   };
 }

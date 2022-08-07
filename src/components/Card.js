@@ -6,7 +6,6 @@ class Card extends React.Component {
   }
 
   handleImgClick = () => {
-    console.dir(this)
     this.props.onCardClick(this.props.card);
   }
 

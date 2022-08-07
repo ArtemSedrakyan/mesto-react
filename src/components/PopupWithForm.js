@@ -12,7 +12,7 @@ class PopupWithForm extends React.Component {
           <button className="popup__close-button" type="button" aria-label="Закрыть" onClick={this.props.onClose} />
           <h2 className="popup__title">{`${this.props.title}`}</h2>
           {this.props.children}
-          <button className="popup__submit-button" type="submit">Сохранить</button>
+          <button className="popup__submit-button" type="submit">{this.props.buttonText}</button>
         </form>
       </div>
     );
