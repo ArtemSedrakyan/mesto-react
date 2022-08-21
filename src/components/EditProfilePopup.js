@@ -20,9 +20,8 @@ function EditProfilePopup(props) {
     if (currentUser.name || currentUser.about !== undefined) {
       setName(currentUser.name);
       setDesciption(currentUser.about);
-    }
-
-  }, [currentUser]);
+    };
+  }, [currentUser, props.isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -40,8 +39,7 @@ function EditProfilePopup(props) {
       onClose={props.onClose}
       buttonText='Сохранить'
       onSubmit={handleSubmit}
-      children={
-        <>
+      >
         <label className="popup__field">
           <input  type="text" minLength="2" maxLength="40" id="name-input" name="name"
             placeholder="Имя" className="popup__input popup__input_type_name" value={name}
@@ -54,9 +52,7 @@ function EditProfilePopup(props) {
             onChange={handleChangeDescription} required/>
           <span className="popup__input-error about-input-error"></span>
         </label>
-        </>
-      }
-    />
+      </PopupWithForm>
   );
 }
 

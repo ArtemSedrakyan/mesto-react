@@ -21,6 +21,11 @@ function AddPlacePopup(props) {
     });
   };
 
+  React.useEffect(() => {
+    setPlaceName('');
+    setPlaceLink('');
+  }, [props.isOpen]);
+
   return(
     <PopupWithForm
     name="add"
@@ -29,8 +34,7 @@ function AddPlacePopup(props) {
     onClose={props.onClose}
     buttonText="Создать"
     onSubmit={handleSubmit}
-    children={
-      <>
+    >
         <label className="popup__field">
           <input
             type="text"
@@ -59,9 +63,7 @@ function AddPlacePopup(props) {
           />
           <span className="popup__input-error place-link-error"></span>
         </label>
-      </>
-    }
-  />
+    </PopupWithForm>
   );
 };
 

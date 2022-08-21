@@ -25,6 +25,10 @@ function EditAvatarPopup(props) {
     });
   };
 
+  React.useEffect(() => {
+    avatarLinkRef.current.value = '';
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm
       name="avatar"
@@ -33,8 +37,7 @@ function EditAvatarPopup(props) {
       onClose={props.onClose}
       buttonText="Сохранить"
       onSubmit={handleSubmit}
-      children={
-        <>
+      >
           <label className="popup__field">
             <input
               type="url"
@@ -49,9 +52,7 @@ function EditAvatarPopup(props) {
             />
             <span className="popup__input-error avatar-input-error"></span>
           </label>
-        </>
-      }
-    />
+    </PopupWithForm>
   );
 }
 

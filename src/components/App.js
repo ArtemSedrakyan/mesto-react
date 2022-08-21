@@ -64,7 +64,7 @@ class App extends React.Component {
 
   handleUpdateUser = (data) => {
     api.patchProfileData(data)
-    .then((res) => {
+    .then(() => {
       this.setState({
         currentUser: this.state.currentUser
       })
@@ -78,6 +78,9 @@ class App extends React.Component {
         .catch((err) => {
           console.log(err);
         });
+    })
+    .catch((err) => {
+      console.log(err);
     });
   };
 
@@ -94,6 +97,9 @@ class App extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+    })
+    .catch((err) => {
+      console.log(err);
     });
   };
 
@@ -120,6 +126,9 @@ class App extends React.Component {
         cards: this.state.cards.filter((stateElement) => stateElement._id !== card._id)
       })
     })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   handleAddPlaceSubmit = (card) => {
@@ -133,7 +142,7 @@ class App extends React.Component {
     .catch((err) => {
       console.log(err);
     });
-  }
+  };
 
   render() {
     return (
